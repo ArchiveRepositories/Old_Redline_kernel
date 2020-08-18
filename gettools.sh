@@ -9,7 +9,7 @@ git clone https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarc
 git clone https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9 -b android-10.0.0_r41 --depth=1 stock_32
 
 # Clone AnyKernel3
-git clone https://github.com/mylove90/AnyKernel3
+git clone https://github.com/johnmart19/AnyKernel3
 
 #Download Clang
 if [ ! -d clang ]; then
