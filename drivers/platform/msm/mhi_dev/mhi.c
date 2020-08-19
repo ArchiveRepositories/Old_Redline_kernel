@@ -1706,6 +1706,10 @@ static void mhi_dev_transfer_completion_cb(void *mreq)
 			MHI_DEV_CH_TYPE_INBOUND_CHANNEL)
 		ch->pend_wr_count--;
 
+	if (mhi->ch_ctx_cache[ch->ch_id].ch_type ==
+			MHI_DEV_CH_TYPE_INBOUND_CHANNEL)
+		ch->pend_wr_count--;
+
 	dma_unmap_single(&mhi_ctx->pdev->dev, req->dma,
 			req->len, DMA_FROM_DEVICE);
 
