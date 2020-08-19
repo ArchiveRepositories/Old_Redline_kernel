@@ -2444,7 +2444,6 @@ static int gsi_set_alt(struct usb_function *f, unsigned int intf,
 {
 	struct f_gsi	 *gsi = func_to_gsi(f);
 	struct f_gsi	 *gsi_rmnet_v2x = __gsi[USB_PROT_RMNET_V2X_IPA];
-	struct f_gsi	 *gsi_ecm = __gsi[USB_PROT_ECM_IPA];
 	struct usb_composite_dev *cdev = f->config->cdev;
 	struct net_device	*net;
 	int ret;

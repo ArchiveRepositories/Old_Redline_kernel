@@ -116,9 +116,6 @@
 /* Timestamp Tick 25us/LSB */
 #define ST_ASM330LHH_TS_DELTA_NS		25000ULL
 
-/* Timestamp Tick 25us/LSB */
-#define ST_ASM330LHH_TS_DELTA_NS		25000ULL
-
 /* Define Custom events for FIFO flush */
 #define CUSTOM_IIO_EV_DIR_FIFO_EMPTY (IIO_EV_DIR_NONE + 1)
 #define CUSTOM_IIO_EV_DIR_FIFO_DATA (IIO_EV_DIR_NONE + 2)

@@ -323,30 +323,6 @@ static int st_asm330lhh_get_odr_calibration(struct st_asm330lhh_hw *hw)
 	return 0;
 }
 
-static int st_asm330lhh_get_odr_calibration(struct st_asm330lhh_hw *hw)
-{
-	s64 odr_calib;
-	int err;
-	s8 data;
-
-	err = hw->tf->read(hw->dev,
-			   ST_ASM330LHH_INTERNAL_FREQ_FINE,
-			   sizeof(data), (u8 *)&data);
-	if (err < 0) {
-		dev_err(hw->dev, "failed to read %d register\n",
-				ST_ASM330LHH_INTERNAL_FREQ_FINE);
-		return err;
-	}
-
-	odr_calib = (data * 37500) / 1000;
-	hw->ts_delta_ns = ST_ASM330LHH_TS_DELTA_NS - odr_calib;
-
-	dev_info(hw->dev, "Freq Fine %lld (ts %lld)\n",
-			odr_calib, hw->ts_delta_ns);
-
-	return 0;
-}
-
 static int st_asm330lhh_set_full_scale(struct st_asm330lhh_sensor *sensor,
 				       u32 gain)
 {

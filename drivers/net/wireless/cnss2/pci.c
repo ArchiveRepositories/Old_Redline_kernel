@@ -1680,13 +1680,9 @@ static int cnss_pci_resume_noirq(struct device *dev)
 
 	driver_ops = pci_priv->driver_ops;
 	if (driver_ops && driver_ops->resume_noirq &&
-	    !pci_priv->pci_link_down_ind) {
-		ret = cnss_set_pci_link(pci_priv, PCI_LINK_UP);
-		if (ret)
-			goto out;
-		pci_priv->pci_link_state = PCI_LINK_UP;
+	    !pci_priv->pci_link_down_ind)
 		ret = driver_ops->resume_noirq(pci_dev);
-	}
+
 out:
 	return ret;
 }
