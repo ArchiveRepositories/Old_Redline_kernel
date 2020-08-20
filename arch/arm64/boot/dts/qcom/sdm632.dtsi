@@ -829,9 +829,10 @@
 		    "apcs-cci-rcg-base", "c1-mux",
 		    "c0-mux", "efuse";
 	qcom,num-clusters = <2>;
-	vdd-c0-supply = <&apc0_pwrcl_vreg>;
-	vdd-c1-supply = <&apc1_perfcl_vreg>;
-	vdd-cci-supply = <&apc0_pwrcl_vreg>;
+	vdd-mx-supply = <&pm8953_s7_level_ao>;
+	vdd-c0-supply = <&apc_vreg>;
+	vdd-c1-supply = <&apc_vreg>;
+	vdd-cci-supply = <&apc_vreg>;
 	clocks = <&clock_gcc clk_xo_a_clk_src>;
 	clock-names = "xo_a";
 	qcom,speed0-bin-v0-c0 =
