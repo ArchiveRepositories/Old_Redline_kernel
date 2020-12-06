@@ -11,7 +11,7 @@ fi
 fi
 
 mkdir -p out
-make O=out ARCH=arm64 onc-perf_defconfig
+make O=out ARCH=arm64 onclite-perf_defconfig
 
 if [[ $1 == "-r" || $1 == "--regen" ]]; then
 cp out/.config arch/arm64/configs/onc-perf_defconfig
@@ -27,7 +27,7 @@ echo -e "\nKernel compiled succesfully! Zipping up...\n"
 git clone -q https://github.com/johnmart19/AnyKernel3 -b lto
 cp out/arch/arm64/boot/Image.gz-dtb AnyKernel3
 
-OUTDIR="$HOME/redline/out/"
+OUTDIR="$HOME/redlinelto/out"
 VENDOR_MODULEDIR="$KERNEL_DIR/AnyKernel3/modules/vendor/lib/modules"
 
 STRIP="$HOME/proton/aarch64-linux-gnu/bin/strip$(echo "$(find "$HOME/proton/bin" -type f -name "aarch64-*-gcc")" | awk -F '/' '{print $NF}' |\
