@@ -79,8 +79,7 @@ static DEFINE_RWLOCK(policy_rwlock);
 
 static struct sidtab sidtab;
 struct policydb policydb;
-int ss_initialized;
-
+int ss_initialized __aligned(0x1000) __attribute__((section(".bss_rtic")));
 /*
  * The largest sequence number that has been used when
  * providing an access decision to the access vector cache.
@@ -2620,12 +2619,8 @@ err:
 	if (*names) {
 		for (i = 0; i < *len; i++)
 			kfree((*names)[i]);
-		kfree(*names);
 	}
 	kfree(*values);
-	*len = 0;
-	*names = NULL;
-	*values = NULL;
 	goto out;
 }
 
@@ -3251,7 +3246,6 @@ out:
 	return match;
 }
 
-#ifdef CONFIG_AUDIT
 static int (*aurule_callback)(void) = audit_update_lsm_rules;
 
 static int aurule_avc_callback(u32 event)
@@ -3274,7 +3268,6 @@ static int __init aurule_init(void)
 	return err;
 }
 __initcall(aurule_init);
-#endif
 
 #ifdef CONFIG_NETLABEL
 /**
